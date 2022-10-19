@@ -34,7 +34,6 @@ public interface InterfaceCrud<T> extends Serializable{
 	//carrega a lista de dados de determinada classe 
 	List<T> findList(Class<T> objs) throws Exception;
 	
-	
 	Object FinById(Class<T> entidade, Long Id) throws Exception;
 	
 	T FinByPorId(Class<T> entidade, Long Id) throws Exception;
@@ -64,7 +63,7 @@ public interface InterfaceCrud<T> extends Serializable{
 	
 	SimpleJdbcInsert getSimpleJdbcInsert();
 	
-	Long totalRegsitro(String table) throws Exception;
+	Long totalRegistro(String table) throws Exception;
 	
 	Query obterQuery(String query) throws Exception;
 	
