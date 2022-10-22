@@ -13,5 +13,4 @@ public class UtilFramework implements Serializable{
 	public synchronized static ThreadLocal<Long> getThreadLocal(){
 		return threadLocal;
 	}
-
 }
