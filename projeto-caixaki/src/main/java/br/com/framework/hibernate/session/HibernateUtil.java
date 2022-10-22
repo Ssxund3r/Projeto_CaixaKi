@@ -17,7 +17,7 @@ import org.hibernate.engine.SessionFactoryImplementor;
 import br.com.framework.implementacao.crud.VariavelConexaoUtil;
 
 /*
- * Responsável por estabelecer a conexção com hibernate
+ * Responsável por estabelecer a conexão com hibernate
  * @author Gabriel Costa*/
 @ApplicationScoped
 public class HibernateUtil implements Serializable {
