@@ -61,7 +61,8 @@ public enum Permissao implements Serializable {
 			@Override
 			public int compare(Permissao o1, Permissao o2) {
 				
-				return new Integer(o1.ordinal()).compareTo(new Integer(o2.ordinal()));
+				return new Integer(o1.ordinal())
+						.compareTo(new Integer(o2.ordinal()));
 			}
 		});
 		return permissoes;
