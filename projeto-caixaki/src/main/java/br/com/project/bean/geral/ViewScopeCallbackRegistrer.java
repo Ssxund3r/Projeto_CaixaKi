@@ -11,7 +11,7 @@ import javax.faces.event.PreDestroyViewMapEvent;
 import javax.faces.event.SystemEvent;
 import javax.faces.event.ViewMapListener;
 
-@SuppressWarnings({ "unused", "unchecked" })
+@SuppressWarnings("unchecked")
 public class ViewScopeCallbackRegistrer implements ViewMapListener, Serializable {
 	private static final long serialVersionUID = 1L;
 
@@ -20,7 +20,6 @@ public class ViewScopeCallbackRegistrer implements ViewMapListener, Serializable
 		return source instanceof UIViewRoot;
 	}
 
-	
 	@Override
 	public void processEvent(SystemEvent event) throws AbortProcessingException {
 		if (event instanceof PostConstructViewMapEvent) {
