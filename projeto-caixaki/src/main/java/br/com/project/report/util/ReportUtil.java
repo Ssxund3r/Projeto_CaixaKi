@@ -56,7 +56,8 @@ public class ReportUtil implements Serializable {
 			HashMap parametrosRelatorio, String nomeRelatorioJasper, 
 			String nomeRelatorioSaida, int tipoRelatorio) throws Exception {
 		/*Cria a lista de collectionDataSource de beans que carregam os dados para o relatório*/
-		JRBeanCollectionDataSource jrBeanCollectionDataSource = new JRBeanCollectionDataSource(listDataBeanCollectionReport);
+		JRBeanCollectionDataSource jrBeanCollectionDataSource = new JRBeanCollectionDataSource
+				(listDataBeanCollectionReport);
 		
 		/*Fornece o caminho até a pasta de contém os relatórios compilados .jasper*/
 		FacesContext context = FacesContext.getCurrentInstance();
@@ -79,7 +80,8 @@ public class ReportUtil implements Serializable {
 		
 		
 		/*Faz o carregamento do relatorio indicado*/
-		JasperReport relatorioJasper = (JasperReport) JRLoader.loadObjectFromFile(caminhoArquivoJasper);
+		JasperReport relatorioJasper = (JasperReport) JRLoader.
+				loadObjectFromFile(caminhoArquivoJasper);
 		
 		/*Seta parametro SUBREPORT_DIR como caminho fisico para sub-report*/
 		caminhoSubreport_dir = caminhoRelatorio + SEPARATOR;
@@ -138,7 +140,8 @@ public class ReportUtil implements Serializable {
 		InputStream conteudoRelatorio = new FileInputStream(arquivoGerado);
 		
 		/*Faz o retorno para a aplicação*/
-		arquivoRetorno = new DefaultStreamedContent(conteudoRelatorio, "application/"+extensaoArquivoExportado, 
+		arquivoRetorno = new DefaultStreamedContent(conteudoRelatorio, 
+				"application/"+extensaoArquivoExportado, 
 				nomeRelatorioSaida + PONTO + extensaoArquivoExportado);
 			
 		return arquivoRetorno;
