@@ -28,7 +28,6 @@ public abstract class BeanReportView extends BeanViewAbstract {
 	@Autowired
 	private ReportUtil reportUtil;
 
-	
 	public BeanReportView() {
 		parametrosRelatorio = new HashMap<Object, Object>();
 		listaDataBeanCollectionReport = new ArrayList();
