@@ -68,7 +68,7 @@ public abstract class BeanViewAbstract implements ActionViewPadrao{
 	protected void error() throws Exception {
 		statusOperation(EstatusPersistencia.ERRO);
 	}
-
+	
 	@Override
 	public String redirecionarNewEntidade() throws Exception {
 		return null;
