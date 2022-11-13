@@ -24,7 +24,7 @@
 		<property name="hibernate.connection.pool_size">50</property>
 		
 		<!-- Inserir entidades -->
-		<mapping  class=""/>
+		<mapping  class="br.com.project.model.classes.Entidade"/>
 		
 		<listener class="org.hibernate.envers.event.AuditEventListener"
 		type="post-insert"/>
