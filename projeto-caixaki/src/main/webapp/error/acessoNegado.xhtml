@@ -6,8 +6,16 @@
 	xmlns:ui="http://java.sun.com/jsf/facelets"
 	xmlns:p="http://primefaces.org/ui">
 <h:head>
+	<meta http-equiv="Content-Type" content="text/html/ charset=UTF-8" />
+	<title><ui:insert name="titulo">CaixaKi</ui:insert></title>
 </h:head>
+<h:form>
 	<h:body>
-				
+		<p:panel id="panelNotAccess" header="Aviso">
+			<h:graphicImage library="img" name="access_not.jpeg">
+				<h:outputLabel value="Acesso Negado... Solicite a Autorização de Permissão..." />
+			</h:graphicImage>
+		</p:panel>
 	</h:body>
+</h:form>
 </html>
