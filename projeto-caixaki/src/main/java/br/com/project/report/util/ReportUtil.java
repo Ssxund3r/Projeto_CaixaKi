@@ -9,7 +9,6 @@ import java.util.List;
 
 import javax.faces.context.FacesContext;
 import javax.servlet.ServletContext;
-import javax.swing.filechooser.FileNameExtensionFilter;
 
 import org.primefaces.model.DefaultStreamedContent;
 import org.primefaces.model.StreamedContent;
