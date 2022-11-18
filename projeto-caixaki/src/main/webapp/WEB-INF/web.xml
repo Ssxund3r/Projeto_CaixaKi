@@ -34,12 +34,12 @@ id="WebApp_ID" metadata-complete="true" version="4.0">
   
    <error-page>
   	<error-code>500</error-code>
-  	<location>/error/acessoNegado.jsf</location>
+  	<location>/error/error.jsf</location>
   </error-page>
   
-   <error-page>
-  	<error-code>403</error-code>
-  	<location>/error/error.jsf</location>
+  <error-page>
+  	<error-code>404</error-code>
+  	<location>/error/404.jsf</location>
   </error-page>
   
   <context-param>
