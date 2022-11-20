@@ -21,7 +21,7 @@
 	  antiResourceLocking="false"
 	  username="postgres"
 	  password="admin"
-	  url="jdbc:postgresql://localhost:5433/caixaki?autoReconect=true"
+	  url="jdbc:postgresql://localhost:5433/caixaki?autoReconnect=true"
 	/>
 	
 </Context> 

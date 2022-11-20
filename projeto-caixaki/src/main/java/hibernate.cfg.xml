@@ -39,10 +39,10 @@
 		type="post-collection-recreate"/>
 		
 		<listener class="org.hibernate.envers.event.AuditEventListener"
-		type="post-collection-update"/>
+		type="pre-collection-update"/>
 		
 		<listener class="org.hibernate.envers.event.AuditEventListener"
-		type="post-collection-remove"/>
+		type="pre-collection-remove"/>
 		
 	</session-factory>
 </hibernate-configuration>
