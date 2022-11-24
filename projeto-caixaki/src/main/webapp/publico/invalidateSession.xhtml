@@ -4,6 +4,7 @@
 	xmlns:f="http://java.sun.com/jsf/core"
 	xmlns:ui="http://java.sun.com/jsf/facelets"
 	xmlns:p="http://primefaces.org/ui">
+	
 <h:head>
 	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
 	<title><ui:insert name="titulo">Caixaki</ui:insert></title>
@@ -63,7 +64,9 @@
 					
 					<f:facet name="footer">
 						<p:commandButton value="Encerrar"
-						style="height:40px; width:100px; background:#CDCDC1; border:1px; solid:#FFFFF;" 
+						style="height:40px; width:100px; 
+						background:#CDCDC1; border:1px; solid:#FFFFF;" 
+						
 						update="form:msg" ajax="true" oncomplete="handleLoginRequest(xhr, status, args)" />
 					</f:facet>
 					
