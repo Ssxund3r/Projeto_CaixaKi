@@ -29,7 +29,7 @@
 			<!--Motivo: #{SPRING_SECURITY_LAST_EXCEPTION.message}  -->
 			
 			  <h:outputLabel rendered="#{SPRING_SECURITY_LAST_EXCEPTION.message == 'Bad credentials'}">
-				<span class="estiloSpan">Permissão Negada, login ou senha incorretos.
+				<span class="estiloSpan">Login ou senha inválidos... Tente novamente
 				</span>
 			  </h:outputLabel> 
 			  
@@ -64,7 +64,7 @@
 				<span style="display: block; padding-top: 2px; text-align: right">
 				<span id="enviando"></span>
 					<button type="submit" class="blue" style="height:40px; 
-					width:100px;background:#CDCDC1;border: 1px;" id="buttonLogin">
+					width:100px; background:#CDCDC1; border:1px;" id="buttonLogin">
 						Entrar
 				 	</button>
 				</span>
