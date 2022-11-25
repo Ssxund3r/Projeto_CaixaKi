@@ -113,11 +113,13 @@
 	 <bean id="reportUtil" class="br.com.project.report.util.ReportUtil"/> 
 	 <bean id="utilFramework" class="br.com.framework.utils.UtilFramework" scope="session"/> 
 	
-	 <!-- Services -->
+	 <!-- Controllers -->
 	 <bean id="sessionController" class="br.com.project.geral.controller.SessionControllerImpl" scope="singleton"/>
 	
-	 <!-- Controllers -->
 	 <!-- DAOS -->
 	 <bean id="repositoryLogin" class="br.com.dao.implementacao.DaoLogin" scope="singleton"/>
 	 
+	 <!-- Services -->
+	 <bean id="srvLogin" class="br.com.srv.implementacao.SrvLoginImpl" scope="singleton"/>
+	  
 </beans>
