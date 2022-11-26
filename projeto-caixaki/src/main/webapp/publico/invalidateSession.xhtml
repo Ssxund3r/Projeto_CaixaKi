@@ -56,16 +56,20 @@
 				<h:panelGrid columns="2" cellpadding="5">
 					<h:outputLabel for="username" value="Login:" />
 					<p:inputText id="username" required="true" label="username"
-					requiredMessage="Informe o Login..." />
+					requiredMessage="Informe o Login..." 
+					value="#{loginBeanView.username}"/>
 					
 					<h:outputLabel for="password" value="Senha:" />
 					<p:password id="password" required="true" label="password"
-					requiredMessage="Informe a Senha..." />
+					requiredMessage="Informe a Senha..." 
+					value="#{loginBeanView.password}"/>
 					
 					<f:facet name="footer">
 						<p:commandButton value="Encerrar"
 						style="height:40px; width:100px; 
 						background:#CDCDC1; border:1px; solid:#FFFFF;" 
+						
+						actionListener="#{loginBeanView.invalidar}"
 						
 						update="form:msg" ajax="true" oncomplete="handleLoginRequest(xhr, status, args)" />
 					</f:facet>
@@ -82,11 +86,12 @@
 		});
 		
 		function handleLoginRequest(xhr, status, args) {
+			
 			if(!args.loggedIn){
 				PF('dlg').jq.effect("shake"), {times:5}, 100;
 			} else {
 				PF('dlg').hide();
-				logout('#{request.contextPath}');
+				document.location = '#{request.contextPath}' + "/j_spring_security_logout"
 			}
 		}
 		
