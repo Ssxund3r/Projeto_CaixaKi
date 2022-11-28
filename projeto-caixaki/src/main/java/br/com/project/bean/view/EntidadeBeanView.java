@@ -23,7 +23,7 @@ public class EntidadeBeanView extends BeanManagedViewAbstract {
 		return contextoBean.getAuthentication().getName();
 	}
 	
-	public Date getUltimoAcesso() {
+	public Date getUltimoAcesso() throws Exception {
 		return contextoBean.getEntidadeLogada().getEnt_ultimoacesso();
 	}
 	
