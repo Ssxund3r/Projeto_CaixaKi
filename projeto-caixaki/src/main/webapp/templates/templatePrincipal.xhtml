@@ -72,8 +72,10 @@
 					<span id="dadoslogin" style=""> Usuário: #{entidadeBeanView.usuarioLogadoSecurity}
 						<br id="quebraUser"/>
 						Último login:
-						<h:outputLabel value="#{entidadeBeanView.ultimoAcesso}" id="saidaUltimoAcesso">
-							
+						<h:outputLabel value="#{entidadeBeanView.ultimoAcesso}" 
+						id="saidaUltimoAcesso">
+							<f:convertDateTime locale="pt_BR" pattern="dd/MM/yyyy HH:mm:ss"
+							dateStyle="long" timeStyle="full" timeZone="GMT-03:00" />
 							
 						</h:outputLabel>
 					</span>
