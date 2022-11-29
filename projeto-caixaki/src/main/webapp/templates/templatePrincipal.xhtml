@@ -76,10 +76,13 @@
 						id="saidaUltimoAcesso">
 							<f:convertDateTime locale="pt_BR" pattern="dd/MM/yyyy HH:mm:ss"
 							dateStyle="long" timeStyle="full" timeZone="GMT-03:00" />
-							
 						</h:outputLabel>
+						<br id="quebraUltimoAcesso"/>
+						<a href="#" onclick="javascript:logout('#{request.contextPath}')">Sair</a>
+						
 					</span>
 				</div>
+				
 			</div>
 		</h:body>
 	</h:form>
