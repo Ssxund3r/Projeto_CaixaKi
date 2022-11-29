@@ -79,11 +79,36 @@
 						</h:outputLabel>
 						<br id="quebraUltimoAcesso"/>
 						<a href="#" onclick="javascript:logout('#{request.contextPath}')">Sair</a>
-						
+					</span>
+					<span id="menuSistema" style="position: absolute; right: 25px; top: 48px; width:20px;">
+						<a href="#" onclick="abrirMenuPop()">
+							<h:graphicImage library="img" name="setabaixo.png" styleClass="bordaImagem" id="imgSetaBaixo" />
+						</a>
 					</span>
 				</div>
 				
+				<div id="menu">
+				  	<span id="iniciarmenu">
+				  		<h:graphicImage library="img" name="iconemenu.png"
+				  		styleClass="bordaImagem" id="iconemenu" >
+				  		Menu
+				  		</h:graphicImage>
+				  	</span>
+				</div>
+				
+				<div id="corpo" class="corpo">
+					<ui:insert name="corpo" />
+				</div>
+				
+				
+				<div id="menupop">
+					teste
+				</div>
+				
 			</div>
+			<script>
+				$('#menupop').hide();
+			</script>
 		</h:body>
 	</h:form>
 </sec:isAuthenticated>

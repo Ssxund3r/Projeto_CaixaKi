@@ -29,4 +29,29 @@ function validarSenhaLogin() {
 		return false;
 	}
 	return true;
-} 
+}
+
+function ocultarMenu() {
+	$('#barramenu').animate({ "left": "-200px" }, "slow", function() {
+		$('#barramenu').hide();
+	});
+}
+
+function abrirMenupop() {
+	$('#menupop').show('slow').mouseleave(function() {
+		fecharMenupop();
+	});
+}
+
+function fecharMenupop() {
+	if ($("#menupop").is(":visible")) {
+		$('#menupop').hide('slow');
+	}
+}
+
+function fecharPesquisa() {
+	$('#paginapesquisa').html('&nbsp;');
+	$('#valorpesquisa').val('');
+	$('#dialogopesquisa').hide();
+}
+
