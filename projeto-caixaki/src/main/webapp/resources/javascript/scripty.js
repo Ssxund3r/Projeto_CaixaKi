@@ -55,3 +55,6 @@ function fecharPesquisa() {
 	$('#dialogopesquisa').hide();
 }
 
+function alterarSenhaDialog(){}
+
+
