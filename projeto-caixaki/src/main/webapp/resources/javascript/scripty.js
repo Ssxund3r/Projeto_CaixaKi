@@ -38,23 +38,22 @@ function ocultarMenu() {
 }
 
 function abrirMenupop() {
-	$('#menupop').show('slow').mouseleave(function() {
+	$("#menupop").show('slow').mouseleave(function() {
 		fecharMenupop();
 	});
 }
 
 function fecharMenupop() {
 	if ($("#menupop").is(":visible")) {
-		$('#menupop').hide('slow');
+		$("#menupop").hide("slow");
 	}
 }
 
-function fecharPesquisa() {
-	$('#paginapesquisa').html('&nbsp;');
-	$('#valorpesquisa').val('');
-	$('#dialogopesquisa').hide();
+function redirecionarPagina(context, pagina){
+	
+	pagina = pagina + ".jsf";
+	alert(context + pagina);
+	document.location = context + pagina;
 }
-
-function alterarSenhaDialog(){}
 
 

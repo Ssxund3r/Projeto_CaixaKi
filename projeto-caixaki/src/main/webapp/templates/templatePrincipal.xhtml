@@ -113,11 +113,23 @@
 						</p:commandLink>
 					</sec:ifAnyGranted>
 				
-				
+					
 					<a href="#" onclick="alterarSenhaDialog.show();" 
 					style="display: block;" id="alterarSenha">
 						<span Style="display: block;" id="spanAlterarSenha">Alterar Senha</span>
 					</a>
+				</div>
+				
+				<div id="barramenu">
+					<p:tieredMenu id="menuEsquerdo" style="width:185px; 
+					border:none; background:none; color:#000;">
+						
+						<p:menuitem value="Início" id="menuinicio"
+						onclick="redirecionarPagina('#{request.contextPath}', '/restrito/principal');" ajax="true"/>
+						
+						<p:menuitem onclick="javascript:logout('#{request.contextPath}');"
+						value="Sair" id="menusair" ajax="true"/>
+					</p:tieredMenu>
 				</div>
 				
 			  </div>
@@ -133,7 +145,9 @@
 			  	corpo
 			  </p:dialog>
 			  
-			
+			<script>
+				//$('#menupop').hide();
+			</script>
 		</h:body>
 	</h:form>
 </sec:isAuthenticated>
