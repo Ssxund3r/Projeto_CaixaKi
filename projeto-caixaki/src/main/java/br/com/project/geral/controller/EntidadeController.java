@@ -18,6 +18,7 @@ public class EntidadeController extends ImplementacaoCrud<Entidade> implements I
 	private SrvEntidade srvEntidade;
 	
 	public Entidade findUserLogado(String userLogado) throws Exception {
+		
 		return super.findUniqueByProperty(Entidade.class, userLogado, 
 				"ent_login", " and entity.ent_inativo is false");
 	}
