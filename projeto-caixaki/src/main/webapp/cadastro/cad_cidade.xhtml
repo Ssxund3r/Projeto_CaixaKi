@@ -54,48 +54,58 @@
 			{LastPageLink} {RowsPerPageDropdown}" 
 			rows="5" paginator="true" paginatorPosition="bottom">
 			
-			<p:column>
+			<p:column style="width:100px;" >
 				<center>
 					<f:facet name="header">Código</f:facet>
 					<h:outputText value="#{objeto.cid_codigo}"/>
 				</center>
 			</p:column>
 			
-			<p:column>
+			<p:column >
 				<center>
 					<f:facet name="header">Cidade</f:facet>
 					<h:outputText value="#{objeto.cid_descricao}"/>
 				</center>
 			</p:column>
 			
-			<p:column>
+			<p:column style="width:450px;" >
 				<center>
 					<f:facet name="header">Estado</f:facet>
 					<h:outputText value="#{objeto.estado.est_nome}"/>
 				</center>
 			</p:column>
 			
-			<p:column>
+		<sec:ifAnyGranted roles="CIDADE_EDITAR, ADMIN" > 
+			<p:column style="width:50px;" >
 				<center>
 					<f:facet name="header">Editar</f:facet>
 					<p:commandLink action="#{cidadeBeanView.editar}" id="editarCidade" 
-					value="Editar" ajax="true" immediate="true">		
-						<f:setPropertyActionListener value="#{objeto}" target="#{cidadeBeanView.objetoSelecionado}" />
+						ajax="true" immediate="true" oncomplete="addFocoCampo('cidadeNome')">
+								
+					<h:graphicImage library="img" name="editar16.png" />
+					<f:setPropertyActionListener value="#{objeto}" 
+						target="#{cidadeBeanView.objetoSelecionado}" />
 					</p:commandLink>
 				</center>
 			</p:column>
-			
-			<p:column>
-				<center>
-					<f:facet name="header">Excluir</f:facet>
-					<p:commandLink action="#{cidadeBeanView.excluir}" id="excluirCidade" 
-					value="Excluir" ajax="true" immediate="true" update="tableResult">		
-						<f:setPropertyActionListener value="#{objeto}" target="#{cidadeBeanView.objetoSelecionado}" />
-					</p:commandLink>
-				</center>
-			</p:column>
-			
-		</p:dataTable>	
+		</sec:ifAnyGranted>
+		
+		<sec:ifAnyGranted roles="CIDADE_EXCLUIR, ADMIN">
+				<p:column style="width:50px;" >
+					<center>
+						<f:facet name="header">Excluir</f:facet>
+						<p:commandLink action="#{cidadeBeanView.excluir}" id="excluirCidade" 
+							ajax="true" immediate="true" update="tableResult" 
+							onclick="if(!confirm('Deseja excluir o registro : #{objeto.cid_descricao}?')) return false;">
+						<h:graphicImage library="img" name="excluir16.png"/>
+						<f:setPropertyActionListener value="#{objeto}" 
+							target="#{cidadeBeanView.objetoSelecionado}" />
+						</p:commandLink>
+					</center>
+				 </p:column>
+		</sec:ifAnyGranted>
+		
+	  </p:dataTable>	
 	</ui:define>
 </ui:composition>
 </html>
