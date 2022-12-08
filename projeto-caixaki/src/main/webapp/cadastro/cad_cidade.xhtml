@@ -15,97 +15,52 @@
 				<h:panelGrid id="gridCidade" columns="3">
 					<h:outputLabel for="id" value="Código:" id="labelId" />
 					<p:inputText id="id" styleClass="estiloIdCadastro" disabled="true"
-					value="#{cidadeBeanView.objetoSelecionado.cid_codigo}"/>
+						value="#{cidadeBeanView.objetoSelecionado.cid_codigo}" />
 					<h:outputLabel />
-					
-					<h:outputLabel id="labelNomeConsultaCidade" for="cidadeNome" value="Nome Cidade * :"/>
-					<p:inputText id="cidadeNome" styleClass="estyleInputName" 
-					required="true" maxlength="100" 
-					value="#{cidadeBeanView.objetoSelecionado.cid_descricao}"
-					requiredMessage="Informe o nome da cidade"/>
-					<p:message for="cidadeNome"/>
-					
-					<h:outputLabel for="estado" id="labelEstado" value="Nome Estado * :"/>
+
+					<h:outputLabel id="labelNomeConsultaCidade" for="cidadeNome"
+						value="Nome Cidade * :" />
+					<p:inputText id="cidadeNome" styleClass="estyleInputName"
+						required="true" maxlength="100"
+						value="#{cidadeBeanView.objetoSelecionado.cid_descricao}"
+						requiredMessage="Informe o nome da cidade" />
+					<p:message for="cidadeNome" />
+
+					<h:outputLabel for="estado" id="labelEstado"
+						value="Nome Estado * :" />
 					<p:selectOneMenu id="estado" required="true" style="width:200px;"
-						requiredMessage="Informe o estado." value="#{cidadeBeanView.objetoSelecionado.estado}">
-						<f:selectItems value="#{estadoBeanView.estados}"/>
+						requiredMessage="Informe o estado."
+						value="#{cidadeBeanView.objetoSelecionado.estado}">
+						<f:selectItems value="#{estadoBeanView.estados}" />
 					</p:selectOneMenu>
-					<p:message  for="estado" />
-					
+					<p:message for="estado" />
 				</h:panelGrid>
 			</p:panel>
-			
-			<div class="espacoBranco"/>
-			
-			<p:commandButton value="Salvar" ajax="false" action="#{cidadeBeanView.save}"/>
-			<p:commandButton value="Novo" ajax="false" action="#{cidadeBeanView.novo}"/>	
+
+			<div class="espacoBranco" />
+
+			<p:commandButton value="Salvar" ajax="false"
+				action="#{cidadeBeanView.save}" />
+			<p:commandButton value="Novo" ajax="false"
+				action="#{cidadeBeanView.novo}" />
 		</h:form>
-		
+
 		<script type="text/javascript" charset="UTF-8">
 			addFocoAoCampo("cidadeNome");
 			gerenciaTeclaEnter();
 		</script>
-		
-		<div class="espacoBranco"/>
-		
-		<p:dataTable id="tableResult" value="#{cidadeBeanView.list}" var="objeto"
-			emptyMessage="Não existe valor para exibição." rendered="#{cidadeBeanView.list.size() > 0}"
+
+		<div class="espacoBranco" />
+
+		<p:dataTable id="tableResult" value="#{cidadeBeanView.list}"
+			var="objeto" emptyMessage="Não existe valor para exibição."
+			rendered="#{cidadeBeanView.list.size() > 0}"
 			paginatorTemplate="{FirstPageLink} {PreviousPageLink} {PageLinks} {NextPageLink} 
-			{LastPageLink} {RowsPerPageDropdown}" 
+			{LastPageLink} {RowsPerPageDropdown}"
 			rows="5" paginator="true" paginatorPosition="bottom">
-			
-			<p:column style="width:100px;" >
-				<center>
-					<f:facet name="header">Código</f:facet>
-					<h:outputText value="#{objeto.cid_codigo}"/>
-				</center>
-			</p:column>
-			
-			<p:column >
-				<center>
-					<f:facet name="header">Cidade</f:facet>
-					<h:outputText value="#{objeto.cid_descricao}"/>
-				</center>
-			</p:column>
-			
-			<p:column style="width:450px;" >
-				<center>
-					<f:facet name="header">Estado</f:facet>
-					<h:outputText value="#{objeto.estado.est_nome}"/>
-				</center>
-			</p:column>
-			
-		<sec:ifAnyGranted roles="CIDADE_EDITAR, ADMIN" > 
-			<p:column style="width:50px;" >
-				<center>
-					<f:facet name="header">Editar</f:facet>
-					<p:commandLink action="#{cidadeBeanView.editar}" id="editarCidade" 
-						ajax="true" immediate="true" oncomplete="addFocoCampo('cidadeNome')">
-								
-					<h:graphicImage library="img" name="editar16.png" />
-					<f:setPropertyActionListener value="#{objeto}" 
-						target="#{cidadeBeanView.objetoSelecionado}" />
-					</p:commandLink>
-				</center>
-			</p:column>
-		</sec:ifAnyGranted>
-		
-		<sec:ifAnyGranted roles="CIDADE_EXCLUIR, ADMIN">
-				<p:column style="width:50px;" >
-					<center>
-						<f:facet name="header">Excluir</f:facet>
-						<p:commandLink action="#{cidadeBeanView.excluir}" id="excluirCidade" 
-							ajax="true" immediate="true" update="tableResult" 
-							onclick="if(!confirm('Deseja excluir o registro : #{objeto.cid_descricao}?')) return false;">
-						<h:graphicImage library="img" name="excluir16.png"/>
-						<f:setPropertyActionListener value="#{objeto}" 
-							target="#{cidadeBeanView.objetoSelecionado}" />
-						</p:commandLink>
-					</center>
-				 </p:column>
-		</sec:ifAnyGranted>
-		
-	  </p:dataTable>	
+
+			<ui:include src="/resources/components/colunasDataTableCidade.xhtml" />
+		</p:dataTable>
 	</ui:define>
 </ui:composition>
 </html>
