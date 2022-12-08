@@ -49,7 +49,10 @@
 		<div class="espacoBranco"/>
 		
 		<p:dataTable id="tableResult" value="#{cidadeBeanView.list}" var="objeto"
-			emptyMessage="Não existe valor para exibição.">
+			emptyMessage="Não existe valor para exibição." rendered="#{cidadeBeanView.list.size() > 0}"
+			paginatorTemplate="{FirstPageLink} {PreviousPageLink} {PageLinks} {NextPageLink} 
+			{LastPageLink} {RowsPerPageDropdown}" 
+			rows="5" paginator="true" paginatorPosition="bottom">
 			
 			<p:column>
 				<center>
