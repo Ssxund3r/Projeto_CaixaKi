@@ -26,25 +26,25 @@ public class CidadeBeanView extends BeanManagedViewAbstract {
 
 	@Resource
 	private CidadeController cidadeController;
-	
+
 	@Override
 	public String editar() throws Exception {
-		
+
 		return url;
 	}
-	
+
 	@Override
 	public void excluir() throws Exception {
 		cidadeController.delete(objetoSelecionado);
 		novo();
 	}
-	
+
 	@Override
 	public String save() throws Exception {
 		objetoSelecionado = cidadeController.merge(objetoSelecionado);
 		return "";
 	}
-	
+
 	@Override
 	public void saveNotReturn() throws Exception {
 		list.clear();
@@ -52,6 +52,12 @@ public class CidadeBeanView extends BeanManagedViewAbstract {
 		list.add(objetoSelecionado);
 		objetoSelecionado = new Cidade();
 		sucesso();
+	}
+
+	@Override
+	public void saveEdit() throws Exception {
+		// Faz algum processamento
+		saveNotReturn();
 	}
 
 	@Override
