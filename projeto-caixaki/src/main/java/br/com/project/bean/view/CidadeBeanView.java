@@ -44,6 +44,15 @@ public class CidadeBeanView extends BeanManagedViewAbstract {
 		objetoSelecionado = cidadeController.merge(objetoSelecionado);
 		return "";
 	}
+	
+	@Override
+	public void saveNotReturn() throws Exception {
+		list.clear();
+		objetoSelecionado = cidadeController.merge(objetoSelecionado);
+		list.add(objetoSelecionado);
+		objetoSelecionado = new Cidade();
+		sucesso();
+	}
 
 	@Override
 	public String novo() throws Exception {

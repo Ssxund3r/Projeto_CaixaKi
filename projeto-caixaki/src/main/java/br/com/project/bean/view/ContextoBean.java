@@ -65,7 +65,7 @@ public class ContextoBean implements Serializable {
 		return externalContext;
 	}
 
-	public boolean possuAcesso(String... acessos) {
+	public boolean possuiAcesso(String... acessos) {
 
 		for (String acesso : acessos) {
 			for (GrantedAuthority authority : getAuthentication().getAuthorities()) {
