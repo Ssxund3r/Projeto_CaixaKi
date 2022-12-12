@@ -9,10 +9,12 @@ import javax.faces.bean.ManagedBean;
 import org.springframework.context.annotation.Scope;
 import org.springframework.stereotype.Controller;
 
+import br.com.framework.interfac.crud.InterfaceCrud;
 import br.com.project.bean.geral.BeanManagedViewAbstract;
 import br.com.project.geral.controller.CidadeController;
 import br.com.project.model.classes.Cidade;
 
+@SuppressWarnings({"unchecked", "rawtypes"})
 @Controller
 @Scope(value = "session")
 @ManagedBean(name = "cidadeBeanView")
@@ -20,6 +22,8 @@ public class CidadeBeanView extends BeanManagedViewAbstract {
 	private static final long serialVersionUID = 1L;
 
 	private String url = "/cadastro/cad_cidade.jsf?faces-redirect=true";
+	private String urlFind = "/cadastro/find_cidade.jsf?faces-redirect=true";
+	
 	private Cidade objetoSelecionado = new Cidade();
 
 	private List<Cidade> list = new ArrayList<Cidade>();
@@ -36,7 +40,7 @@ public class CidadeBeanView extends BeanManagedViewAbstract {
 	@Override
 	public void excluir() throws Exception {
 		objetoSelecionado = (Cidade) cidadeController.getSession()
-				.get(Cidade.class, objetoSelecionado.getCid_codigo());
+				.get(getClassImplement() , objetoSelecionado.getCid_codigo());
 		cidadeController.delete(objetoSelecionado);
 		list.remove(objetoSelecionado);
 		novo();
@@ -67,9 +71,14 @@ public class CidadeBeanView extends BeanManagedViewAbstract {
 	
 	@Override
 	public String novo() throws Exception {
-		objetoSelecionado = new Cidade();
-
+		setarVariaveisNulas();
 		return url;
+	}
+	
+	@Override
+	public void setarVariaveisNulas() throws Exception {
+		list.clear();
+		objetoSelecionado = new Cidade();
 	}
 
 	public void setObjetoSelecionado(Cidade objetoSelecionado) {
@@ -80,9 +89,28 @@ public class CidadeBeanView extends BeanManagedViewAbstract {
 		return objetoSelecionado;
 	}
 
+	
 	public List<Cidade> getList() throws Exception {
-		list = cidadeController.findList(Cidade.class);
+		list = cidadeController.findList(getClassImplement());
 		return list;
 	}
+
+	@Override
+	protected Class<Cidade> getClassImplement() {
+		return Cidade.class;
+	}
+	
+	@Override
+	public String redirecionarFindEntidade() throws Exception {
+		setarVariaveisNulas();
+		return urlFind;
+	}
+
+	@Override
+	protected InterfaceCrud<Cidade> getController() {
+		return cidadeController;
+	}
+	
+	
 
 }
