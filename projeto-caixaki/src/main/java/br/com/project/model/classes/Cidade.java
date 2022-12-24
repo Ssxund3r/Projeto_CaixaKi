@@ -33,7 +33,7 @@ public class Cidade implements Serializable {
 
 	@IdentificaCampoPesquisa(descricaoCampo = "Descrição", campoConsulta = "cid_descricao", principal = 1)
 	@Column(length = 100, nullable = false)
-	private String cid_descricao;
+	private String cid_descricao; 
 
 	@IdentificaCampoPesquisa(descricaoCampo = "Estado", campoConsulta = "estado.est_nome")
 	@Basic

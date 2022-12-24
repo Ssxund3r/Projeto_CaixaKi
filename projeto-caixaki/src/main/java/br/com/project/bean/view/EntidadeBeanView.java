@@ -10,6 +10,8 @@ import org.springframework.stereotype.Controller;
 
 import br.com.framework.interfac.crud.InterfaceCrud;
 import br.com.project.bean.geral.BeanManagedViewAbstract;
+import br.com.project.geral.controller.EntidadeController;
+import br.com.project.model.classes.Entidade;
 
 @Controller
 @ManagedBean(name = "entidadeBeanView")
@@ -20,6 +22,9 @@ public class EntidadeBeanView extends BeanManagedViewAbstract {
 	@Autowired
 	private ContextoBean contextoBean;
 	
+	@Autowired
+	private EntidadeController entidadeController;
+	
 	public String getUsuarioLogadoSecurity() {
 		return contextoBean.getAuthentication().getName();
 	}
@@ -29,15 +34,13 @@ public class EntidadeBeanView extends BeanManagedViewAbstract {
 	}
 
 	@Override
-	protected Class<?> getClassImplement() {
-		// TODO Auto-generated method stub
-		return null;
+	protected Class<Entidade> getClassImplement() {
+		return Entidade.class;
 	}
 
 	@Override
-	protected InterfaceCrud<?> getController() {
-		// TODO Auto-generated method stub
-		return null;
+	protected InterfaceCrud<Entidade> getController() {
+		return entidadeController;
 	}
 	
 }

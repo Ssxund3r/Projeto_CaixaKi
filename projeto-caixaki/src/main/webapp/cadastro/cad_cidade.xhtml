@@ -9,7 +9,12 @@
 
 <ui:composition template="/templates/templatePrincipal.xhtml">
 	<ui:define name="corpo">
-		<h:form id="formCadastro" prependId="false">
+	
+	<util:menuImpressao bean="#{cidadeBeanView}">
+		
+	</util:menuImpressao>
+	
+		  <h:form id="formCadastro" prependId="false">
 			<c:set var="isCadastro" value="true" scope="view" />
 			<p:panel header="Cadastro de cidade" id="panelCadastro">
 				<h:panelGrid id="gridCidade" columns="3">
