@@ -13,7 +13,7 @@
 </composite:interface>
 
 <composite:implementation>
-	<h:commandLink immediate="true" disabled="true">
+	<h:commandLink immediate="true" disabled="false">
 		<f:setPropertyActionListener target="#{cc.attrs.bean.tipoRelatorio}" value="1" />
 		<p:fileDownload value="#{cc.attrs.bean.arquivoReport}" />
 		<h:graphicImage library="img" name="pdf.png" />

@@ -14,5 +14,19 @@ public abstract class BeanManagedViewAbstract extends BeanReportView implements 
 	protected abstract Class<?> getClassImplement();
 	
 	protected abstract InterfaceCrud<?> getController();
+	
+	public ObjetoCampoConsulta getObjetoCampoConsultaSelecionado;
+
+	public ObjetoCampoConsulta getGetObjetoCampoConsultaSelecionado() {
+		return getObjetoCampoConsultaSelecionado;
+	}
+
+	public void setGetObjetoCampoConsultaSelecionado(ObjetoCampoConsulta 
+			getObjetoCampoConsultaSelecionado) {
+		
+		this.getObjetoCampoConsultaSelecionado = getObjetoCampoConsultaSelecionado;
+	}
+	
+	
 
 }
