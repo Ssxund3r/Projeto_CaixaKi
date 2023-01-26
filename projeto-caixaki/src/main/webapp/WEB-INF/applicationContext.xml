@@ -34,6 +34,7 @@
 	<context:component-scan base-package="br.com.project.bean.view.grafico"/>
 	<context:component-scan base-package="br.com.framework.controller.crud"/>
 	<context:component-scan base-package="br.com.framework.interfac.crud"/>
+	<context:component-scan base-package="br.com.project.enums"/>
 	
 	<!-- Data Source -->
 	<bean id="springDataSource" name="springDataSource"

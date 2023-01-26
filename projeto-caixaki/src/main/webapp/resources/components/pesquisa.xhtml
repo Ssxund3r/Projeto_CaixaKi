@@ -41,7 +41,7 @@
 			 	<h:outputLabel for="campo" id="labelCampo" value="Campo: "/>
 			 	<p:selectOneMenu style="width:150px;" id="campo"
 			 		onchange=""
-			 		value="">
+			 		value="#{cc.attrs.managedBeanView.objetoCampoConsultaSelecionado}">
 			 		<f:selectItems var="campoPesquisaSelecionado" 
 			 		itemLabel="#{campoPesquisaSelecionado.descricao}"
 			 		itemValue="#{campoPesquisaSelecionado.tipoClass}"
@@ -49,6 +49,18 @@
 			 			
 			 		</f:selectItems>
 			 	</p:selectOneMenu>
+			 	
+			 	<h:outputLabel for="condicao" id="labelCondicao" value="Onde :"/>
+			 	<p:selectOneMenu id="condicao" style="with:150px;"
+			 		value="#{cc.attrs.managedBeanView.condicaoPesquisaSelecionado}">
+			 		<f:selectItems id="itensCondicao" 
+			 		 value="#{cc.attrs.managedBeanView.listaCondicaoPesquisa}">
+			 		</f:selectItems>
+			 	</p:selectOneMenu>
+			 	
+			 	<p:commandButton id="buttonPesquisar" value="Filtrar" ajax="true" 
+			 		process="@this, panelPesquisa" actionListener="#{cc.attrs.managedBeanView.consultarEntidade}">
+			 	</p:commandButton>
 			 	
 		 	</h:panelGrid>
 		 	

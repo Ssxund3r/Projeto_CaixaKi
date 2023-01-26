@@ -31,7 +31,7 @@ public class Cidade implements Serializable {
 	@GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "cidade_seq")
 	private Long cid_codigo;
 
-	@IdentificaCampoPesquisa(descricaoCampo = "Descrição", campoConsulta = "cid_descricao", principal = 1)
+	@IdentificaCampoPesquisa(descricaoCampo = "Descrição", campoConsulta = "cid_descricao", principal = 2)
 	@Column(length = 100, nullable = false)
 	private String cid_descricao; 
 

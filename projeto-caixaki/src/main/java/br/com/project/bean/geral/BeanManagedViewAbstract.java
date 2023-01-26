@@ -2,7 +2,6 @@ package br.com.project.bean.geral;
 
 import java.lang.reflect.Field;
 import java.util.ArrayList;
-import java.util.Collection;
 import java.util.Collections;
 import java.util.Comparator;
 import java.util.List;
@@ -13,26 +12,62 @@ import org.springframework.stereotype.Component;
 
 import br.com.framework.interfac.crud.InterfaceCrud;
 import br.com.project.annotation.IdentificaCampoPesquisa;
+import br.com.project.enums.CondicaoPesquisa;
 import br.com.project.report.util.BeanReportView;
 
 @Component
 public abstract class BeanManagedViewAbstract extends BeanReportView {
+
 	private static final long serialVersionUID = 1L;
 
 	protected abstract Class<?> getClassImplement();
 
 	protected abstract InterfaceCrud<?> getController();
 
-	public ObjetoCampoConsulta getObjetoCampoConsultaSelecionado;
+	public ObjetoCampoConsulta objetoCampoConsultaSelecionado;
 
 	public List<SelectItem> listaCampoPesquisa;
 
-	public ObjetoCampoConsulta getGetObjetoCampoConsultaSelecionado() {
-		return getObjetoCampoConsultaSelecionado;
+	public List<SelectItem> listaCondicaoPesquisa;
+
+	public CondicaoPesquisa condicaoPesquisaSelecionado;
+
+	public void setCondicaoPesquisaSelecionado(CondicaoPesquisa condicaoPesquisaSelecionado) {
+		this.condicaoPesquisaSelecionado = condicaoPesquisaSelecionado;
+	}
+
+	public CondicaoPesquisa getCondicaoPesquisaSelecionado() {
+		return condicaoPesquisaSelecionado;
+	}
+
+	public List<SelectItem> getListaCondicaoPesquisa() {
+		listaCondicaoPesquisa = new ArrayList<SelectItem>();
+		for (CondicaoPesquisa condicaoPesquisa : CondicaoPesquisa.values()) {
+			listaCondicaoPesquisa.add(new SelectItem(condicaoPesquisa, condicaoPesquisa.toString()));
+		}
+		return listaCondicaoPesquisa;
+	}
+
+	public ObjetoCampoConsulta getObjetoCampoConsultaSelecionado() {
+		return objetoCampoConsultaSelecionado;
 	}
 
 	public void setGetObjetoCampoConsultaSelecionado(ObjetoCampoConsulta getObjetoCampoConsultaSelecionado) {
-		this.getObjetoCampoConsultaSelecionado = getObjetoCampoConsultaSelecionado;
+		if (objetoCampoConsultaSelecionado != null) {
+			for (Field field : getClassImplement().getDeclaredFields()) {
+				if (field.isAnnotationPresent(IdentificaCampoPesquisa.class)) {
+					if (objetoCampoConsultaSelecionado.getCampoBanco().equalsIgnoreCase(field.getName())) {
+						String descricaoCampo = field.getAnnotation(IdentificaCampoPesquisa.class).descricaoCampo();
+						objetoCampoConsultaSelecionado.setDescricao(descricaoCampo);
+						objetoCampoConsultaSelecionado.setTipoClass(field.getType().getCanonicalName());
+						objetoCampoConsultaSelecionado
+								.setPrincipal(field.getAnnotation(IdentificaCampoPesquisa.class).principal());
+						break;
+					}
+				}
+			}
+		}
+		this.objetoCampoConsultaSelecionado = getObjetoCampoConsultaSelecionado;
 	}
 
 	public List<SelectItem> getListaCampoPesquisa() {
@@ -56,11 +91,11 @@ public abstract class BeanManagedViewAbstract extends BeanReportView {
 		}
 
 		orderReverse(listTemp);
-		
+
 		for (ObjetoCampoConsulta objetoCampoConsulta : listTemp) {
 			listaCampoPesquisa.add(new SelectItem(objetoCampoConsulta));
 		}
-		
+
 		return listaCampoPesquisa;
 	}
 
@@ -73,4 +108,5 @@ public abstract class BeanManagedViewAbstract extends BeanReportView {
 			}
 		});
 	}
+
 }

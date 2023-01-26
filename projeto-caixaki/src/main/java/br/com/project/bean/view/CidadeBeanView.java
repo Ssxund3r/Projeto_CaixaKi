@@ -117,4 +117,9 @@ public class CidadeBeanView extends BeanManagedViewAbstract {
 		return super.getArquivoReport();
 	}
 	
+	@Override
+	public void consultarEntidade() throws Exception {
+		super.consultarEntidade();
+	}
+	
 }
