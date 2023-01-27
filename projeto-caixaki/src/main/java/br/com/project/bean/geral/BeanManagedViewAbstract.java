@@ -14,6 +14,7 @@ import br.com.framework.interfac.crud.InterfaceCrud;
 import br.com.project.annotation.IdentificaCampoPesquisa;
 import br.com.project.enums.CondicaoPesquisa;
 import br.com.project.report.util.BeanReportView;
+import br.com.project.util.all.UtilitariaRegex;
 
 @Component
 public abstract class BeanManagedViewAbstract extends BeanReportView {
@@ -31,6 +32,16 @@ public abstract class BeanManagedViewAbstract extends BeanReportView {
 	public List<SelectItem> listaCondicaoPesquisa;
 
 	public CondicaoPesquisa condicaoPesquisaSelecionado;
+
+	public String valorPesquisa;
+
+	public void setValorPesquisa(String valorPesquisa) {
+		this.valorPesquisa = valorPesquisa;
+	}
+
+	public String getValorPesquisa() {
+		return valorPesquisa != null ? new UtilitariaRegex().retiraAcentos(valorPesquisa) : "";
+	}
 
 	public void setCondicaoPesquisaSelecionado(CondicaoPesquisa condicaoPesquisaSelecionado) {
 		this.condicaoPesquisaSelecionado = condicaoPesquisaSelecionado;

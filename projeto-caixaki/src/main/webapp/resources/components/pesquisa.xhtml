@@ -58,6 +58,9 @@
 			 		</f:selectItems>
 			 	</p:selectOneMenu>
 			 	
+			 	<p:inputText id="valorPesquisa" immediate="false" 
+			 	value="#{cc.attrs.managedBeanView.valorPesquisa}"/>
+			 	
 			 	<p:commandButton id="buttonPesquisar" value="Filtrar" ajax="true" 
 			 		process="@this, panelPesquisa" actionListener="#{cc.attrs.managedBeanView.consultarEntidade}">
 			 	</p:commandButton>
