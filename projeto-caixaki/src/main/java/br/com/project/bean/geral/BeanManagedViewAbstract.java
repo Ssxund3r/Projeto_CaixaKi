@@ -62,6 +62,10 @@ public abstract class BeanManagedViewAbstract extends BeanReportView {
 	public ObjetoCampoConsulta getObjetoCampoConsultaSelecionado() {
 		return objetoCampoConsultaSelecionado;
 	}
+	
+	public void setObjetoCampoConsultaSelecionado(ObjetoCampoConsulta objetoCampoConsultaSelecionado) {
+		this.objetoCampoConsultaSelecionado = objetoCampoConsultaSelecionado;
+	}
 
 	public void setGetObjetoCampoConsultaSelecionado(ObjetoCampoConsulta getObjetoCampoConsultaSelecionado) {
 		if (objetoCampoConsultaSelecionado != null) {

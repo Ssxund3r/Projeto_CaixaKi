@@ -1,5 +1,10 @@
 var arrayIdsElementsPage = new Array;
-
+var idundefined = 'idundefined';
+var classTypeString = 'java.lang.String';
+var classTypeLong = 'java.lang.Long';
+var classTypeDate = 'java.util.Date';
+var classTypeBoolean = 'java.lang.Boolean';
+var classTypeBigDecimal = 'java.math.BigDecimal';
 
 /**
  * Carrega um array global com os ids de todos os componentes da pagina Para ter
@@ -149,7 +154,7 @@ function initTemplate() {
 function addFocoAoCampo(campo) {
 	var id = getValorElementPorId(campo);
 	if (id != undefined) {
-		document.getElementById(id).focus();
+		document.getElementById(getValorElementPorId(id)).focus();
 	}
 }
 
@@ -183,3 +188,58 @@ function gerenciaTeclaEnter() {
 	});
 
 }
+
+function getValorElementPorIdJQuery(id) {
+	var id = getValorElementPorId(id);
+	if (id.trim() != idundefined) {
+		return PrimeFaces.escapeClientId(id);
+	}
+	return idundefined;
+}
+
+function permitNumber(e) {
+	var unicode = e.charCode ? e.charCode : e.keyCode;
+	if (unicode != 8 && unicode != 9) {
+		if (unicode < 48 || unicode > 57) {
+			return false;
+		}
+	}
+
+}
+
+function addMascaraPesquisa(elemento) {
+	var id = getValorElementPorIdJQuery('valorPesquisa');
+	var vals = elemento.split("*");
+	var campoBanco = vals[0];
+	var typeCampo = vals[1];
+
+	$(id).unmask();
+	$(id).unbind("keypress");
+	$(id).unbind("keyup");
+	$(id).unbind("focus");
+	$(id).val('');
+	if (id != idundefined) {
+		jQuery(function($) {
+			if (typeCampo === classTypeLong) {
+				$(id).keypress(permitNumber);
+			}
+			else if (typeCampo === classTypeBigDecimal) {
+				$(id).maskMoney({ precision: 4, decimal: ",", thousands: "." });
+			}
+			else if (typeCampo === classTypeDate) {
+				$(id).mask('99/99/9999');
+			}
+			else {
+				$(id).unmask();
+				$(id).unbind("keypress");
+				$(id).unbind("keyup");
+				$(id).unbind("focus");
+				$(id).val('');
+			}
+			addFocoAoCampo("valorPesquisa");
+		});
+	}
+}
+
+
+
