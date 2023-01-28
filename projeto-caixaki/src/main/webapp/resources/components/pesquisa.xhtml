@@ -14,6 +14,7 @@
 			<composite:attribute name="ocultaNovo" required="true"/>
 			<composite:attribute name="menuImpressao" required="false" default="false"/>
 			<composite:attribute name="nomePesquisa" required="true" default="false"/>
+			<composite:attribute name="colunasGridDataTableList" required="true" default="false"/>
 		</composite:interface>
 		
 		<composite:implementation>
@@ -64,13 +65,27 @@
 			 	value="#{cc.attrs.managedBeanView.valorPesquisa}"/>
 			 	
 			 	<p:commandButton id="buttonPesquisar" value="Filtrar" ajax="true" 
-			 		process="@this, panelPesquisa" actionListener="#{cc.attrs.managedBeanView.consultarEntidade}">
-			 	</p:commandButton>
-			 	
+			 		process="@this, panelPesquisa" 
+			 		actionListener="#{cc.attrs.managedBeanView.consultarEntidade}"
+			 		onsuccess="addFocoAoCampo('valorPesquisa');"
+			 		oncomplete="addFocoAoCampo('valorPesquisa');"
+			 		update=":formTemplate:msg, tableResult">
+			 	</p:commandButton> 	
 		 	</h:panelGrid>
 		 	
 		 </p:panel>
 		 
+		 <p:spacer/>
+		 
+		 <p:dataTable id="tableResult" rendered="true" 
+		 value="#{cc.attrs.managedBeanView.list}"
+		 var="objeto" rows="10" widgetVar="tableResult"
+		 paginatorPosition="bottom" lazy="true" paginator="true"
+		 emptyMessage="Não existe valor para exibir..."
+		 paginatorTemplate="{FirstPageLink} {PreviousPageLink} 
+		 {PageLinks} {NextPageLink} {LastPageLink} {RowsPerPageDropdown}">
+		 	<ui:include src="#{cc.attrs.colunasGridDataTableList}" />
+		 </p:dataTable>
 		 
 		 <script type="text/javascript" charset="UTF-8">   
 	
