@@ -98,4 +98,9 @@ public class LoginBeanView extends BeanManagedViewAbstract implements Serializab
 		return null;
 	}
 
+	@Override
+	public String condicaoAdParaPesquisa() throws Exception {
+		return null;
+	}
+
 }

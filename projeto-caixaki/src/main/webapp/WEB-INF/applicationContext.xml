@@ -116,7 +116,7 @@
 	
 	 <!-- Controllers -->
 	 <bean id="sessionController" class="br.com.project.geral.controller.SessionControllerImpl" scope="singleton"/>
-	
+	 <bean id="controller" name="controller" class="br.com.framework.controller.crud.Controller"/>
 	 <!-- DAOS -->
 	 <bean id="repositoryLogin" class="br.com.dao.implementacao.DaoLogin" scope="singleton"/>
 	 

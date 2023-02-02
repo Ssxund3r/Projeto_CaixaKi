@@ -32,7 +32,7 @@
 	<p:column style="width:50px;">
 		<center>
 			<f:facet name="header">Editar</f:facet>
-			<p:commandLink action="#{cidadeBeanView.editar}" id="editarCidade"
+			<p:commandLink action="#{cidadeBeanView.editar}" id="editarCidade" update="@form"
 				ajax="true" immediate="true" oncomplete="addFocoCampo('cidadeNome')">
 				<h:graphicImage library="img" name="editar16.png" />
 				<f:setPropertyActionListener value="#{objeto}"

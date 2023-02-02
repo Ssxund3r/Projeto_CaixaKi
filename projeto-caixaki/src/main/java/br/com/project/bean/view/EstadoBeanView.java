@@ -38,4 +38,9 @@ public class EstadoBeanView extends BeanManagedViewAbstract {
 		return estadoController;
 	}
 
+	@Override
+	public String condicaoAdParaPesquisa() throws Exception {
+		return null;
+	}
+
 }

@@ -29,4 +29,9 @@ public class MensagemBeanView extends BeanManagedViewAbstract {
 	protected InterfaceCrud<?> getController() {
 		return null;
 	}
+
+	@Override
+	public String condicaoAdParaPesquisa() throws Exception {
+		return null;
+	}
 }
